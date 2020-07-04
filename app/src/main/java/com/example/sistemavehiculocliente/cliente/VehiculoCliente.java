@@ -3,30 +3,25 @@ package com.example.sistemavehiculocliente.cliente;
 import com.example.sistemavehiculocliente.model.Vehiculo;
 import com.example.sistemavehiculocliente.util.EndPoint;
 
-import java.util.concurrent.TimeUnit;
+import java.util.List;
 
-import okhttp3.OkHttpClient;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.Call;
+import retrofit2.http.Body;
+import retrofit2.http.DELETE;
+import retrofit2.http.GET;
+import retrofit2.http.Header;
+import retrofit2.http.POST;
+import retrofit2.http.Path;
 
-public class VehiculoCliente {
+public interface VehiculoCliente {
 
-    public void insertar(Vehiculo vehiculo){
+    /**Aqui le decimos al sistema que le vamos a enviar un objeto Json*/
+    @POST(EndPoint.INSERTAR_VEHICULO)
+    Call<Void> insertar(@Header("Content-Type") String contentTYype, @Body Vehiculo vehiculo);
 
-        Retrofit retrofit = getInstance();
+    @DELETE(EndPoint.ELIMINAR_VEHICULO)
+    Call<Void> eliminar(@Path("placa") String placa_vehiuclo);
 
-    }
-
-    private Retrofit getInstance() {
-        return new Retrofit.Builder()
-                .baseUrl(EndPoint.URL_BASE)
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(simpleClient).build();
-    }
-
-    private final OkHttpClient simpleClient = new OkHttpClient.Builder()
-            .readTimeout(EndPoint.CONNECTION_TIMEOUT_RETROFIT, TimeUnit.SECONDS)
-            .connectTimeout(EndPoint.CONNECTION_TIMEOUT_RETROFIT, TimeUnit.SECONDS)
-            .build();
-
+    @GET(EndPoint.LISTAR)
+    Call<List<Vehiculo>> listar();
 }

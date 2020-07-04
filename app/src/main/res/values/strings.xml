@@ -10,4 +10,12 @@
     <string name="menu_home">Home</string>
     <string name="menu_listar">Listar</string>
     <string name="menu_insercion">Insertar</string>
+    <string name="informacion_insertada">Informacion insertada exitosamente</string>
+    <string name="ocurrio_un_error">Ocurrió un error en la comunicación</string>
+    <string name="enviar">Enviar</string>
+    <string name="listar">Se han listado los datos</string>
+    <string name="no_listar">Ocurrio un error al listar los datos</string>
+    <string name="sin_vehiculos">No existen vehiculos configuradas en el sistema</string>
+    <string name="elimino_correctamente">Se elimino correctamente.</string>
+    <string name="no_elimino">Hubo un error al eliminar el objeto.</string>
 </resources>
